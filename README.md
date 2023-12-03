@@ -39,13 +39,16 @@ Le travail personnel est sollicité dans le graphisme/interaces, l'ajout de comp
 ### Informations de rendu
 
 Nom de l'étudiant : Louis Floreani, Classe : ICC
+
 Project Console: https://console.firebase.google.com/project/cy2023-feast-39748/overview
 Hosting URL: https://cy2023-feast-39748.web.app
 
 Identifiants compte admin :
+
 email : pipo@pipo.fr
 Mdp : pipopipo
 
 Identifiants autre compte (organisateur) : 
+
 email : papipa@papipa.fr
 Mdp : papipapapipa
