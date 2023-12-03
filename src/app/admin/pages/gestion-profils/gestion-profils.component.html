@@ -1,0 +1,29 @@
+<table>
+    <thead>
+      <th>Nom</th>
+      <th>Prénom</th>
+      <th>Email</th>
+      <th>Statut</th>
+      <th>Gestion</th>
+    </thead>
+  
+    <tbody>
+      <ng-container *ngFor="let u of users.usersList">
+        <tr *ngIf="u.statut === 'user' || u.statut === 'organisateur'">
+            <td>{{ u.nom | uppercase }}</td>
+            <td>{{ u.prenom }}</td>
+            <td>{{ u.email }}</td>
+            <td>{{ u.statut }}</td>
+            <td>
+                <button (click)="deleteUser(u.id)" *ngIf="u.id">
+                  <i class="fas fa-trash-alt"></i> Supprimer
+                </button>
+                <button (click)="updateUser(u.id)" *ngIf="u.id">
+                  <i class="fas fa-edit"></i> Modifier
+                </button>
+            </td>
+        </tr>
+      </ng-container>
+      
+    </tbody>
+  </table>

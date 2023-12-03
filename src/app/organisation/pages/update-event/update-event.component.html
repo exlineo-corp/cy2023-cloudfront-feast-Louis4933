@@ -1,0 +1,37 @@
+<section>
+    <form [formGroup]="eventForm" (submit)="updateEvent()">
+      <h1>Modification d'un évènement</h1>
+
+      <fieldset>
+        <label>Titre*</label>
+        <input formControlName="titre" required>
+      </fieldset>
+  
+      <fieldset>
+        <label >Date*</label>
+        <input type="date" formControlName="date" required>
+      </fieldset>
+  
+      <fieldset>
+        <label>Début*</label>
+        <input type="time" formControlName="debut" required>
+      </fieldset>
+  
+      <fieldset>
+        <label>Fin*</label>
+        <input type="time" formControlName="fin" required>
+      </fieldset>
+  
+      <fieldset>
+        <label>Nombre de places*</label>
+        <input type="number" formControlName="places" required>
+      </fieldset>
+  
+      <fieldset>
+        <label>Bandeau</label>
+        <input type="text" formControlName="image_url" placeholder="URL de votre image">
+      </fieldset>
+  
+      <button type="submit">Modifier l'évènement</button>
+    </form>
+  </section>

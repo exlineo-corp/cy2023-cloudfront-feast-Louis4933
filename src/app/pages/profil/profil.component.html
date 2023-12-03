@@ -1,0 +1,9 @@
+<section>
+    <h1>Profil</h1>
+    <div *ngIf="auth.isLoggedIn">
+      <p>Email: {{ auth.profil.email }}</p>
+      <p>Nom: {{ auth.profil.nom }}</p>
+      <p>Prénom: {{ auth.profil.prenom }}</p>
+      <p>Statut: {{ auth.profil.statut }}</p>
+    </div>
+</section>

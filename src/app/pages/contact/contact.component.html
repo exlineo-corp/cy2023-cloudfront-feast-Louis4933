@@ -1,0 +1,35 @@
+<section>
+  <h1>Besoin d'infos ? Vous manquez de RedBull ?</h1>
+  <h2>Laissez-nous un message</h2>
+  <form (submit)="coucouToi()">
+    <label >Nom</label>
+    <input name="nom" [(ngModel)]="contact.nom" #ctlNom="ngModel" required minlength="8">
+    <span *ngIf="ctlNom.value.length < 8 ">le champ doit avoir au moins 8 carctères</span>
+
+    <label >Prénom</label>
+    <input name="prenom" [(ngModel)]="contact.prenom">
+
+    <label for="">Adresse (rue)</label>
+    <input name="rue" [(ngModel)]="contact.adresse.rue">
+
+    <label >Code Postal</label>
+    <input name="codePostal" [(ngModel)]="contact.adresse.codePostal">
+
+    <label >Ville</label>
+    <input name="ville" [(ngModel)]="contact.adresse.ville">
+
+    <label >Téléphone</label>
+    <input name="tel" [(ngModel)]="contact.tel">
+
+    <label >Email</label>
+    <input name="email" [(ngModel)]="contact.email">
+
+    <label >Commentaire ?</label>
+    <input name="infos"  [(ngModel)]="contact.infos">
+
+
+    <button type="submit">Envoyer mon message</button>
+    <button type="reset">J'ai changé d'avis</button>
+
+  </form>
+</section>

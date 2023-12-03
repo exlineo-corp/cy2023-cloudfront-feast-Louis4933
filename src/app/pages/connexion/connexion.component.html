@@ -1,0 +1,20 @@
+<section>
+  <h1>Connexion</h1>
+
+  <div *ngIf="auth.errorMessage" class="error-message">{{ auth.errorMessage }}</div>
+
+  <form (submit)="login()">
+    <fieldset>
+      <label>Email</label>
+      <input [(ngModel)]="auth.authID.id" name="email">
+    </fieldset>
+
+    <fieldset>
+      <label >Mot de passe</label>
+      <input [(ngModel)]="auth.authID.mdp" type="password" name="password" >
+    </fieldset>
+
+    <button type="submit">Connexion</button>
+
+  </form>
+</section>

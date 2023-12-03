@@ -1,0 +1,17 @@
+<section>
+  <form (submit)="updateStatut(userStatut.value)">
+    
+    <h1>Modifier le statut de l'utilisateur</h1>
+
+    <fieldset>
+      <label>Statut</label>
+      <select name="statut" #userStatut>
+        <option value="user">User</option>
+        <option value="organisateur">Organisateur</option>
+      </select>
+    </fieldset>
+
+    <button type="submit">Modifier</button>
+    
+  </form>
+</section>

@@ -1,0 +1,17 @@
+<section>
+    <form [formGroup]="stockForm" (submit)="addStock()">
+      <h1>Ajout d'un stock</h1>
+
+      <fieldset>
+        <label>Nom*</label>
+        <input formControlName="name" required>
+      </fieldset>
+  
+      <fieldset>
+        <label >Quantité</label>
+        <input type="number" formControlName="quantity" required>
+      </fieldset>
+  
+      <button type="submit">Ajouter le stock</button>
+    </form>
+  </section>

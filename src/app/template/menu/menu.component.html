@@ -1,0 +1,11 @@
+<nav>
+  <ul>
+    <li routerLink="/">Accueil</li>
+    <li routerLink="/evenements">Évènements</li>
+    <li routerLink="/inscription">Inscription</li>
+    <li routerLink="/profil">Profil</li>
+    <li routerLink="/utilisateurs">Utilisateurs</li>
+    <li routerLink="/connexion" *ngIf="!auth.isLoggedIn">Se connecter</li>
+    <li *ngIf="auth.isLoggedIn" (click)="logout()">Se déconnecter</li>
+  </ul>
+</nav>

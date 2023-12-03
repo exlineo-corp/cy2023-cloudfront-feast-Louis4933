@@ -1,0 +1,27 @@
+<section>
+  <fieldset>
+    <input type="text" [(ngModel)]="filtre"  placeholder="Filtre">
+  </fieldset>
+  <table>
+    <thead>
+        <th>Titre</th>
+        <th>Nb. places</th>
+        <th>Début</th>
+        <th>Fin</th>
+        <th>Date</th>
+        <th>Image</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let event of events.eventsList$.value | events:filtre">
+        <td><a [routerLink]="['/evenement', event.id]">{{ event.titre | uppercase }}</a></td>
+        <td>{{ event.places }}</td>
+        <td>{{ event.horaires.debut }}</td>
+        <td>{{ event.horaires.fin }}</td>
+        <td>{{ event.date | date:'MMM d, y, h:mm:ss a' }}</td>
+        <td><img src="{{ event.image }}" alt="Placeholder image"></td>
+      </tr>
+    </tbody>
+  </table>
+
+</section>
+

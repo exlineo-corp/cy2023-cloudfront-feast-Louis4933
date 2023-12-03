@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "cy2023-feast-39748": {
+      "hosting": {
+        "CY2023-feast": [
+          "cy2023-feast-39748"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "cy2023-feast-39748"
+  }
+}
