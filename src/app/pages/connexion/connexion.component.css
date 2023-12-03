@@ -1,10 +1,69 @@
+/* Apply styles to the entire section */
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+
+/* Style the heading */
+h1 {
+  color: #333;
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
 .error-message {
-    color: #721c24;
-    background-color: #f8d7da;
-    border: 1px solid #f5c6cb;
-    border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 10px;
-    width: auto; /* Ajustement automatique de la largeur */
-    display: inline-block; /* Permet au conteneur de s'ajuster à la largeur du texte */
-  }
+  color: #721c24;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  width: auto;
+  display: inline-block;
+}
+
+/* Style the form */
+form {
+  width: 300px;
+  margin: 0 auto;
+}
+
+/* Style fieldsets */
+fieldset {
+  margin-bottom: 15px;
+}
+
+/* Style labels */
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+/* Style input fields */
+input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Style the submit button */
+button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+button:hover {
+  background-color: #45a049;
+}
