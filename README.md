@@ -35,3 +35,17 @@ Si vous voulez aller plus loin et améliorer votre évaluation, ajoutez un chat 
 ## Critères d'évaluation
 
 Le travail personnel est sollicité dans le graphisme/interaces, l'ajout de composants externes, les algorithmes, notamment pour la sécurité, etc. Il est important que les différentes parties du logiciel soient coordonnées et fonctionnelles. Le projet doit être pensé comme un livrable opérationnel. Par exemple un utilisateur peut se connecter, déconnecter. Ses droits lui permettent des accès à des parties protégées de l'application. Une erreur de réseau le déconnecte automatiquement.
+
+### Informations de rendu
+
+Nom de l'étudiant : Louis Floreani, Classe : ICC
+Project Console: https://console.firebase.google.com/project/cy2023-feast-39748/overview
+Hosting URL: https://cy2023-feast-39748.web.app
+
+Identifiants compte admin :
+email : pipo@pipo.fr
+Mdp : pipopipo
+
+Identifiants autre compte (organisateur) : 
+email : papipa@papipa.fr
+Mdp : papipapapipa
