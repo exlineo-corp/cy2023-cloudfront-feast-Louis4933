@@ -15,8 +15,8 @@
             <td>{{ u.email }}</td>
             <td>{{ u.statut }}</td>
             <td>
-                <button (click)="deleteUser(u.id)" *ngIf="u.id">
-                  <i class="fas fa-trash-alt"></i> Supprimer
+                <button (click)="deleteProfile(u.id)" *ngIf="u.id">
+                  <i class="fas fa-trash-alt"></i> Supprimer le profil
                 </button>
                 <button (click)="updateUser(u.id)" *ngIf="u.id">
                   <i class="fas fa-edit"></i> Modifier

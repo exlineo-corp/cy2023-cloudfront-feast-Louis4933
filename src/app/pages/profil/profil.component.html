@@ -1,9 +1,21 @@
 <section>
     <h1>Profil</h1>
-    <div *ngIf="auth.isLoggedIn">
+    <!-- this.auth.user.uid==this.auth.documentId : Gère le cas où le profil de l'utilisateur aurait été supprimé,
+         afin de ne pas afficher les informations de l'utilisateur précédemment connecté -->
+    <div *ngIf="auth.isLoggedIn && this.auth.user.uid==this.auth.documentId">
       <p>Email: {{ auth.profil.email }}</p>
       <p>Nom: {{ auth.profil.nom }}</p>
       <p>Prénom: {{ auth.profil.prenom }}</p>
       <p>Statut: {{ auth.profil.statut }}</p>
+    </div>
+
+    <div *ngIf="!auth.isLoggedIn">
+      <p>Vous n'êtes pas connecté.</p>
+      <a routerLink="/connexion" *ngIf="!auth.isLoggedIn">Se connecter</a>
+    </div>
+
+    <div *ngIf="this.auth.user.uid!=this.auth.documentId">
+      <p>Votre profil a été supprimé. Veuillez en recréer un.</p>
+      <a routerLink="/inscription" *ngIf="auth.isLoggedIn && this.auth.user.uid!=this.auth.documentId">Créer un profil</a>
     </div>
 </section>

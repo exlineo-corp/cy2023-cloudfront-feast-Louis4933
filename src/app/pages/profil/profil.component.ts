@@ -1,4 +1,5 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 })
 export class ProfilComponent implements OnInit {
 
-  constructor(private cdr: ChangeDetectorRef, public auth: AuthService) {}
+  constructor(private cdr: ChangeDetectorRef, public auth: AuthService, public router: Router) {}
 
   ngOnInit() {
       this.cdr.detectChanges();

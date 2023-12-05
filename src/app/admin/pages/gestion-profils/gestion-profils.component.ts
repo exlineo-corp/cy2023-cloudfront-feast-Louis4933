@@ -16,8 +16,8 @@ export class GestionProfilsComponent implements OnInit {
     this.userService.getUsers();
   }
 
-  deleteUser(id : string){
-    this.userService.deleteAccount(id);
+  deleteProfile(id : string){
+    this.userService.deleteProfile(id);
     this.userService.getUsers();
   }
 

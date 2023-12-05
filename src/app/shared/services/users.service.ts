@@ -71,7 +71,7 @@ export class UsersService {
    * Supprime le compte utilisateur
    * @param userId ID de l'utilisateur à supprimer
    */
-  deleteAccount(userId: string): Promise<void> {
+  deleteProfile(userId: string): Promise<void> {
     const userDoc = doc(this.firestore, 'users', userId);
 
     return deleteDoc(userDoc)

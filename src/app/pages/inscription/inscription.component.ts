@@ -16,10 +16,16 @@ export class InscriptionComponent{
   statut : string = '';
   infos : string = '' ;
   mdp : string = '';
+  statutValue : string | undefined;
 
   constructor (public auth: AuthService, public user:UsersService, public router: Router) {}
 
   signup() {
+    if (this.auth.profil) {
+      this.statutValue = this.auth.profil.statut;
+    } else {
+      this.statutValue = 'user';
+    }
     this.auth.fireSignUp(this.email, this.mdp)
   }
 }

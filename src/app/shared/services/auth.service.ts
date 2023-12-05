@@ -14,6 +14,7 @@ export class AuthService {
   profil !: UsersI;
   user !: User;
   errorMessage: string = '';
+  documentId: string | null = null;
 
   constructor(private firestore: Firestore) { }
 
@@ -42,6 +43,8 @@ export class AuthService {
         (doc) => {
           if (doc.exists()) {
             this.profil = doc.data() as UsersI;
+            console.log('Document UID:', doc.id);  // Récupérer l'UID du document
+            this.documentId = doc.id;
             console.log(this.profil);
           }
         }
