@@ -1,4 +1,12 @@
 <section *ngIf="!loader">
   <h2>{{ event.titre }}</h2>
+  <td>{{ event.places }}</td>
+  <td>{{ event.horaires.debut }}</td>
+  <td>{{ event.horaires.fin }}</td>
+  <td>{{ event.date | date:'MMM d, y, h:mm:ss a' }}</td>
   <img src="https://via.placeholder.com/150" alt="Placeholder image">
+  <button (click)="registration()" *ngIf="auth.isLoggedIn && !isRegistered && event.places > countParticipations && auth.profil">Réserver ma place</button>
+  <button disabled *ngIf="auth.isLoggedIn && !isRegistered && event.places <= countParticipations">Il n'y a plus de place</button>
+  <button disabled *ngIf="auth.isLoggedIn && isRegistered">Vous êtes déjà inscrit</button>
+  <button (click)="deregistration()" *ngIf="auth.isLoggedIn && isRegistered">Se désinscrire</button>
 </section>

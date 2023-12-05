@@ -34,7 +34,7 @@
 
     <input hidden name="email" [ngModel]="auth.user.email">
 
-    <input hidden name="statut" [ngModel]="statutValue">
+    <input hidden name="statut" [ngModel]="auth.profil!.statut ? auth.profil.statut : 'user'">
     
     <button type="submit">Compléter</button>
     

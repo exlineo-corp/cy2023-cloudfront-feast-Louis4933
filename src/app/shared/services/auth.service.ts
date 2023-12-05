@@ -81,6 +81,8 @@ export class AuthService {
     try {
       // Déconnexion de l'utilisateur
       await signOut(this.fire);
+      this.authID = { id : '', mdp : '' };
+      this.profil = { nom : '', prenom : '', email : '', statut : '' };
       this.isLoggedIn = false;
     } catch (error) {
       console.error('Erreur lors de la déconnexion', error);

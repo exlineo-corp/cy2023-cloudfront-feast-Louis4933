@@ -9,23 +9,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./inscription.component.css']
 })
 export class InscriptionComponent{
-  nom : string = '';
-  prenom : string = '';
-  id : string = '';
   email : string = '';
-  statut : string = '';
-  infos : string = '' ;
   mdp : string = '';
-  statutValue : string | undefined;
 
   constructor (public auth: AuthService, public user:UsersService, public router: Router) {}
 
   signup() {
-    if (this.auth.profil) {
-      this.statutValue = this.auth.profil.statut;
-    } else {
-      this.statutValue = 'user';
-    }
     this.auth.fireSignUp(this.email, this.mdp)
   }
 }

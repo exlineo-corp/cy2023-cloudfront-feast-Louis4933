@@ -6,7 +6,6 @@ export interface UsersI {
   emailVerified ?: boolean;
   token ?: string;
   statut ?: string;
-  infos ?: string;
 }
 
 export interface ContactI {
