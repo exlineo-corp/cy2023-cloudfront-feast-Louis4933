@@ -39,4 +39,7 @@
     <button type="submit">Compléter</button>
     
   </form>
+
+  <p>{{ user.submitMessage }}</p>
+  <a routerLink="/" *ngIf="user.submitMessage">Retourner à l'accueil</a>
 </section>

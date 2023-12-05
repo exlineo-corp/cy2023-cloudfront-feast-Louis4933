@@ -3,30 +3,35 @@ import { Firestore, setDoc, collection, doc, getDocs, deleteDoc, getDoc } from '
 import { AuthService } from './auth.service';
 import { UsersI } from '../models/users-i';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
   usersList: Array<UsersI> = [];
+  submitMessage = '';
 
-  constructor(private firestore:Firestore, private auth:AuthService) { }
+  constructor(private firestore:Firestore, private auth:AuthService, private router: Router) { }
 
   /**
    * Met à jour ou créer un document dans la collection users s'il n'existe pas déjà
    * @param profil
    */
   manageDoc(profil: NgForm){
-    console.log("Profil sent: ", profil);
-    const monDoc = doc(this.firestore, 'users', this.auth.user.uid);
-    
-    setDoc(monDoc, profil, {merge:true})
-    .then(
-      () => console.log('Document created or updated')
-    ).catch(
-      er => console.log(er)
-    );
-  }
+  console.log("Profil sent: ", profil);
+  const monDoc = doc(this.firestore, 'users', this.auth.user.uid);
+  
+  setDoc(monDoc, profil, {merge:true})
+  .then(
+    () => {
+      console.log('Document created or updated');
+      this.submitMessage = 'Votre profil a bien été mis à jour.';
+    }
+  ).catch(
+    er => console.log(er)
+  );
+}
 
   // Renvoie la liste des utilisateurs déjà inscrits
   getUsers() {
