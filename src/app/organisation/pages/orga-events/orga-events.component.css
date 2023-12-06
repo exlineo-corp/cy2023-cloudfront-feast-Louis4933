@@ -3,18 +3,17 @@ section {
   margin: 20px;
 }
 
-/* Style du champ de filtre */
 fieldset {
   margin-bottom: 20px;
 }
 
 input {
   padding: 10px;
-  width: 100%;
-  border: 1px solid #ccc;
+  border: 1px solid transparent;
   border-radius: 5px;
   box-sizing: border-box;
   font-size: 1em;
+  margin-right: 10px;
 }
 
 /* Style du tableau des événements */
