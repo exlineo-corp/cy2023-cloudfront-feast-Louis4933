@@ -12,7 +12,7 @@ export class ParticipationService {
   // Inscription à l'évènement
   registration(participant: ParticipantsI) {
     addDoc(collection(this.firestore,'participations'), participant)
-    .then(() => console.log('Votre inscription a bien été prise en compte'))
+    .then(() => console.log('L\'inscription a bien été prise en compte'))
     .catch(er => console.log(er));
   }
 

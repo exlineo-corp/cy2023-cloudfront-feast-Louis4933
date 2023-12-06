@@ -2,6 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { UsersI } from '../models/users-i';
 import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, User } from '@angular/fire/auth';
 import { Firestore, doc, getDoc, collection } from '@angular/fire/firestore';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class AuthService {
   errorMessage: string = '';
   documentId: string | null = null;
 
-  constructor(private firestore: Firestore) { }
+  constructor(private firestore: Firestore, private router: Router) { }
 
   // Fonction pour se connecter avec Firebase
   fireSignIn() {
@@ -87,6 +88,18 @@ export class AuthService {
     } catch (error) {
       console.error('Erreur lors de la déconnexion', error);
     }
+  }
+
+  // Fonction pour supprimer l'user (son compte firebase)
+  deleteUser(){
+    this.user.delete().
+    then(() => {
+        console.log('User account has been deleted');
+        this.authID = { id : '', mdp : '' };
+        this.router.navigateByUrl('/connexion');
+      }
+    )
+    .catch(er => console.log(er));
   }
 
 }

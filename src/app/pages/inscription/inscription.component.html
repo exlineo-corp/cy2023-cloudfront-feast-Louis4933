@@ -20,7 +20,7 @@
 
   <form (submit)="user.manageDoc(ctlf.value)" *ngIf="auth.isLoggedIn" #ctlf="ngForm">
     
-    <h1>Compléter ou modifier votre profil</h1>
+    <h1>Compléter ou modifier mon profil</h1>
 
     <fieldset>
       <label>Nom</label>
@@ -40,6 +40,10 @@
     
   </form>
 
-  <p>{{ user.submitMessage }}</p>
-  <a routerLink="/" *ngIf="user.submitMessage">Retourner à l'accueil</a>
+  <p *ngIf="user.submitMessage">{{ user.submitMessage }}</p>
+  <div *ngIf="user.submitMessage">
+    <div><a routerLink="/">Retourner à l'accueil</a></div>
+    <div><a routerLink="/profil">Voir mon profil</a></div>
+  </div>
+
 </section>

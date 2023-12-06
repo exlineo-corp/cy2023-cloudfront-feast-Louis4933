@@ -27,6 +27,10 @@ export class UsersService {
     () => {
       console.log('Document created or updated');
       this.submitMessage = 'Votre profil a bien été mis à jour.';
+      // Réinitialisation après l'affichage du message
+      setTimeout(() => {
+        this.submitMessage = '';
+      }, 5000); // Réinitialise après 5 secondes
     }
   ).catch(
     er => console.log(er)
@@ -88,6 +92,20 @@ export class UsersService {
     });
   }
 
+  /**
+   * Supprime un user (son compte en base de données & son compte firebase)
+   * @param id
+   */
+  deleteUser(userId:string){
+    this.deleteProfile(userId)
+    .then(() => {
+        console.log('Profile has been deleted');
+        this.auth.deleteUser();
+      }
+    )
+    .catch(er => console.log(er));
+  }
+  
   /**
    * Met à jour le statut d'un utilisateur
    * @param userId ID de l'utilisateur à mettre à jour

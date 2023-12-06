@@ -11,4 +11,6 @@
       <p>Vous n'êtes pas connecté.</p>
       <a routerLink="/connexion" *ngIf="!auth.isLoggedIn">Se connecter</a>
     </div>
+
+    <button *ngIf="auth.isLoggedIn" (click)="user.deleteUser(auth.user.uid)">Supprimer mon compte</button>
 </section>
