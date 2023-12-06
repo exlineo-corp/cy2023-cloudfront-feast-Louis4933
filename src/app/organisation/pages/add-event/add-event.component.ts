@@ -18,7 +18,7 @@ export class AddEventComponent {
     debut: ['', Validators.required],
     fin: ['', Validators.required],
     places: ['', Validators.required],
-    image_url: ['']
+    image: ['']
   });
 
 
@@ -33,7 +33,7 @@ export class AddEventComponent {
           fin: this.eventForm.value.fin
         },
         places: this.eventForm.value.places,
-        image_url: this.eventForm.value.image_url
+        image: this.eventForm.value.image
       };
       this.eventService.addEvent(event);
       this.router.navigateByUrl('organisation/events');

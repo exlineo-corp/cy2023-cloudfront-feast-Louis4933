@@ -31,7 +31,7 @@ export class UpdateEventComponent {
     debut: ['', Validators.required],
     fin: ['', Validators.required],
     places: ['', Validators.required],
-    image_url: ['']
+    image: ['']
   });
 
   // Fonction pour mettre à jour un évènement dans la liste
@@ -45,7 +45,7 @@ export class UpdateEventComponent {
           fin: this.eventForm.value.fin
         },
         places: this.eventForm.value.places,
-        image_url: this.eventForm.value.image_url
+        image: this.eventForm.value.image
       };
       this.eventService.updateEvent(this.eventId, event);
       this.router.navigateByUrl('organisation/events');

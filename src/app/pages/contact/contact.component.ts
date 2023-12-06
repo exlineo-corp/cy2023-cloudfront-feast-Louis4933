@@ -11,10 +11,10 @@ export class ContactComponent {
   contact: ContactI = {
     nom: '',
     prenom: '',
-    age: 0,
+    age: 1,
     adresse: {
       rue: '',
-      codePostal: 0,
+      codePostal: 1,
       ville: ''
     },
     tel: '',
