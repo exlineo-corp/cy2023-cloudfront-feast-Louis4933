@@ -9,4 +9,6 @@
   <button disabled *ngIf="auth.isLoggedIn && !isRegistered && event.places <= countParticipations">Il n'y a plus de place</button>
   <button disabled *ngIf="auth.isLoggedIn && isRegistered">Vous êtes déjà inscrit</button>
   <button (click)="deregistration()" *ngIf="auth.isLoggedIn && isRegistered">Se désinscrire</button>
+  <a *ngIf="!auth.isLoggedIn" routerLink="/inscription">Inscrivez vous pour y participer</a>
+
 </section>

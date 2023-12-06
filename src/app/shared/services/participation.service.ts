@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ParticipantsI } from '../models/participants';
-import { Firestore, addDoc, collection, deleteDoc, getDocs, query, where } from '@angular/fire/firestore';
+import { DocumentData, Firestore, addDoc, collection, deleteDoc, doc, getDoc, getDocs, query, where } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -43,20 +43,39 @@ export class ParticipationService {
   
   // Récupération du nombre d'inscrits
   getCountParticipations(eventId: string): Promise<number> {
-    const q = query(collection(this.firestore, 'participations'), where('event', '==', eventId));
-  
-    return getDocs(q)
+    const participationsQuery = query(collection(this.firestore, 'participations'), where('event', '==', eventId));
+
+    return getDocs(participationsQuery)
       .then(querySnapshot => {
-        const count = querySnapshot.size;
-        console.log('Nombre de participations pour cet évènement :', count);
-        return count;
+        let count = 0;
+
+        const promises = querySnapshot.docs.map(docSnap => {
+          const participationData = docSnap.data() as DocumentData;
+
+          // Vérifier si l'utilisateur associé à l'UID existe encore
+          const userDocRef = doc(this.firestore, 'users', participationData['uid']);
+          return getDoc(userDocRef);
+        });
+
+        return Promise.all(promises)
+          .then(userSnapshots => {
+            userSnapshots.forEach(userDocSnap => {
+              if (userDocSnap.exists()) {
+                // L'utilisateur existe, donc compter cette participation
+                count++;
+              }
+            });
+
+            console.log('Nombre de participations pour cet évènement (utilisateurs existants) :', count);
+            return count;
+          });
       })
-      .catch(er => {
-        console.error('Erreur lors de la récupération du nombre de participants', er);
-        throw er;
+      .catch(error => {
+        console.error('Erreur lors de la récupération du nombre de participants', error);
+        throw error;
       });
   }
-
+  
   // Vérification de la participation de l'user à l'évènement
   checkUserParticipation(idEvent: string, uid: string): Promise<ParticipantsI | null> {
     const q = query(collection(this.firestore, 'participations'), where('event', '==', idEvent), where('uid', '==', uid));
