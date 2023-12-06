@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ContactI } from 'src/app/shared/models/users-i';
+import { Firestore, addDoc, collection } from '@angular/fire/firestore'; // Assurez-vous d'avoir importé le module AngularFirestore
 
 @Component({
   selector: 'app-contact',
@@ -7,23 +8,30 @@ import { ContactI } from 'src/app/shared/models/users-i';
   styleUrls: ['./contact.component.css']
 })
 export class ContactComponent {
-  contact : ContactI = {
-    nom : '',
-    prenom : '',
-    age : 0,
-    adresse : {
-      rue : '',
-      codePostal : 0,
-      ville : ''
+  contact: ContactI = {
+    nom: '',
+    prenom: '',
+    age: 0,
+    adresse: {
+      rue: '',
+      codePostal: 0,
+      ville: ''
     },
-    tel : '',
-    mobile : '',
-    email : '',
-    infos : ''
+    tel: '',
+    mobile: '',
+    email: '',
+    infos: ''
   };
 
-  //a changé pour envoyer le formulaire
-  coucouToi() {
-    console.log(this.contact)
+  constructor(private firestore: Firestore) {}
+
+  saveMessage() {
+    addDoc(collection(this.firestore, 'contacts'), this.contact)
+    .then((doc) => {
+        console.log('Message enregistré avec l\'ID :', doc.id);
+    })
+    .catch((error) => {
+        console.error('Erreur lors de l\'enregistrement du message :', error);
+    });
   }
 }
