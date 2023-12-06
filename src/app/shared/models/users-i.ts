@@ -2,7 +2,7 @@ export interface UsersI {
   nom ?: string;
   prenom ?: string;
   id ?: string;
-  email : string;
+  email ?: string | null;
   emailVerified ?: boolean;
   token ?: string;
   statut ?: string;

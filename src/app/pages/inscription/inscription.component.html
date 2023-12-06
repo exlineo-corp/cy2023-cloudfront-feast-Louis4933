@@ -1,6 +1,6 @@
 <section>
 
-  <form (submit)="signup()" *ngIf="!auth.isLoggedIn">
+  <form (submit)="signUp()" *ngIf="!auth.isLoggedIn">
 
     <h1>Inscription</h1>
     
@@ -18,7 +18,7 @@
 
   </form>
 
-  <form (submit)="user.manageDoc(ctlf.value)" *ngIf="auth.isLoggedIn" #ctlf="ngForm">
+  <form (submit)="submitProfile()" *ngIf="auth.isLoggedIn" #ctlf="ngForm">
     
     <h1>Compléter ou modifier mon profil</h1>
 
@@ -33,7 +33,6 @@
     </fieldset>
 
     <input hidden name="email" [ngModel]="auth.user.email">
-
     <input hidden name="statut" [ngModel]="auth.profil!.statut ? auth.profil.statut : 'user'">
     
     <button type="submit">Compléter</button>

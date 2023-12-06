@@ -4,7 +4,7 @@
   <form (submit)="coucouToi()">
     <label >Nom</label>
     <input name="nom" [(ngModel)]="contact.nom" #ctlNom="ngModel" required minlength="8">
-    <span *ngIf="ctlNom.value.length < 8 ">le champ doit avoir au moins 8 carctères</span>
+    <span *ngIf="ctlNom && ctlNom.value && ctlNom.value.length < 8">Le champ doit avoir au moins 8 caractères</span>
 
     <label >Prénom</label>
     <input name="prenom" [(ngModel)]="contact.prenom">
