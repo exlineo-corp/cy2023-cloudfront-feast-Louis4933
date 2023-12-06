@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { EvenementI } from 'src/app/shared/models/evenement-i';
 import { EvenementsService } from 'src/app/shared/services/evenements.service';
 
 @Component({
@@ -16,8 +17,8 @@ export class OrgaEventsComponent implements OnInit {
   pageSize: number = 5; // Nombre d'événements par page
   page: number = 1; // Page actuelle
   totalPages: number =0;
-  paginatedEvents: any[] | undefined;
-
+  paginatedEvents: EvenementI[] = [];
+  
   constructor(public events: EvenementsService, private router: Router) { 
     this.listener = this.events.eventsList$.subscribe({
       next: evs => {

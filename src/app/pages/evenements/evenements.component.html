@@ -14,7 +14,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let event of paginatedEvents">
+      <tr *ngFor="let event of paginatedEvents | events:filtre">
         <td><a [routerLink]="['/evenement', event.id]">{{ event.titre | uppercase }}</a></td>
         <td>{{ event.places }}</td>
         <td>{{ event.horaires.debut }}</td>

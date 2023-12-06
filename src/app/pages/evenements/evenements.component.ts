@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { EvenementI } from 'src/app/shared/models/evenement-i';
 import { EvenementsService } from 'src/app/shared/services/evenements.service';
 
 @Component({
@@ -16,8 +17,8 @@ export class EvenementsComponent implements OnInit, OnDestroy {
   // Pagination
   pageSize: number = 5; // Nombre d'événements par page
   page: number = 1; // Page actuelle
-  totalPages: number =0;
-  paginatedEvents: any[] | undefined;
+  totalPages: number = 0;
+  paginatedEvents: EvenementI[] = [];
 
   constructor(public events: EvenementsService) {
     this.listener = this.events.eventsList$.subscribe({
