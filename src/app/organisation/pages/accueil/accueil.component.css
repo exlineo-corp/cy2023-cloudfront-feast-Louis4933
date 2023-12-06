@@ -4,8 +4,6 @@ header {
     color: white;
     text-align: center;
     padding: 20px;
-    width: 100%;
-    box-sizing: border-box;
 }
 
 /* Style du titre principal */
@@ -27,3 +25,22 @@ section {
     align-items: center;
     margin-top: 50px;
 }
+
+/* Style du texte de bienvenue */
+p {
+    font-size: 1.5em;
+    text-align: center;
+    line-height: 1.6;
+    max-width: 800px;
+    color: #333;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  p:hover {
+    transform: scale(1.02);
+  }
