@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ContactI } from 'src/app/shared/models/users-i';
-import { Firestore, addDoc, collection } from '@angular/fire/firestore'; // Assurez-vous d'avoir importé le module AngularFirestore
+import { Firestore, addDoc, collection } from '@angular/fire/firestore'; 
 
 @Component({
   selector: 'app-contact',
@@ -22,12 +22,15 @@ export class ContactComponent {
     infos: ''
   };
 
+  formSubmittedSuccessfully: boolean = false;
+
   constructor(private firestore: Firestore) {}
 
   saveMessage() {
     addDoc(collection(this.firestore, 'contacts'), this.contact)
     .then((doc) => {
         console.log('Message enregistré avec l\'ID :', doc.id);
+        this.formSubmittedSuccessfully = true;
     })
     .catch((error) => {
         console.error('Erreur lors de l\'enregistrement du message :', error);

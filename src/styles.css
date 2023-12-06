@@ -1,28 +1,26 @@
-/* styles.css */
-
 body {
   font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: #f4f4f4; /* Light gray background */
-  color: #333; /* Dark text */
+  background-color: #f4f4f4;
+  color: #333;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
 header {
-  background-color: #fff; /* White background for header */
+  background-color: #fff;
   padding: 20px;
   text-align: center;
-  border-bottom: 1px solid #ddd; /* Add a border to the bottom of the header */
+  border-bottom: 1px solid #ddd;
 }
 
 main {
   flex: 1;
   padding: 20px;
-  padding-bottom: 150px; /* Adjust this value based on the height of the footer */
+  padding-bottom: 150px;
 }
 
 footer {
@@ -31,29 +29,26 @@ footer {
   position: fixed;
   bottom: 0;
   width: 100%;
-  border-top: 1px solid #ddd; /* Add a border to the top of the footer */
+  border-top: 1px solid #ddd;
 }
 
-/* Style for links in the menu and footer */
 app-menu li,
 app-footer li {
-  color: #333; /* Dark text for links */
+  color: #333;
   text-decoration: none;
   margin: 0 15px;
-  display: inline-block; /* Use inline-block to include in a box */
+  display: inline-block;
   padding: 10px 15px;
-  border-radius: 8px; /* Rounded edges */
-  transition: background-color 0.3s ease, color 0.3s ease; /* Transitions for hover */
+  border-radius: 8px;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Style for links on hover */
 app-menu li:hover,
 app-footer li:hover {
   text-decoration: none;
-  color: #afa54c; /* Green text on hover */
+  color: #afa54c;
 }
 
-/* Style to display links horizontally */
 app-menu ul,
 app-footer ul {
   list-style: none;

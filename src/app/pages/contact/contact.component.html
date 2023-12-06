@@ -1,37 +1,49 @@
 <section>
   <h1>Besoin d'infos ? Vous manquez de Redbull ?</h1>
-  <form (submit)="saveMessage()">
-    <label >Nom</label>
+  <form #myForm="ngForm" (submit)="saveMessage()">
+
+    <label >Nom <span class="required">*</span></label>
     <input name="nom" [(ngModel)]="contact.nom" #ctlNom="ngModel" required minlength="8">
     <span *ngIf="ctlNom && ctlNom.value && ctlNom.value.length < 8">Le champ doit avoir au moins 8 caractères</span>
 
-    <label >Prénom</label>
+    <label>Prénom</label>
     <input name="prenom" [(ngModel)]="contact.prenom">
 
-    <label >Age</label>
-    <input name="age" [(ngModel)]="contact.age">
+    <label>Age <span class="required">*</span></label>
+    <input name="age" [(ngModel)]="contact.age" type="number" min="1" required>
+    <span *ngIf="contact.age == null || contact.age < 0">
+      L'âge doit être un nombre positif.
+    </span>
 
     <label for="">Adresse (rue)</label>
     <input name="rue" [(ngModel)]="contact.adresse.rue">
 
-    <label >Code Postal</label>
-    <input name="codePostal" [(ngModel)]="contact.adresse.codePostal">
+    <label>Code Postal <span class="required">*</span></label>
+    <input name="codePostal" [(ngModel)]="contact.adresse.codePostal" type="number" min="1" required>
+    <span *ngIf="contact.adresse.codePostal == null || contact.adresse.codePostal < 0">
+      Le code postal doit être un nombre positif.
+    </span>
 
-    <label >Ville</label>
+    <label>Ville</label>
     <input name="ville" [(ngModel)]="contact.adresse.ville">
 
-    <label >Téléphone</label>
+    <label>Téléphone</label>
     <input name="tel" [(ngModel)]="contact.tel">
 
-    <label >Email</label>
-    <input name="email" [(ngModel)]="contact.email">
+    <label>Email<span class="required">*</span></label>
+    <input name="email" [(ngModel)]="contact.email" type="email" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" required>
 
-    <label >Commentaire ?</label>
-    <input name="infos"  [(ngModel)]="contact.infos">
+    <label>Demande<span class="required">*</span></label>
+    <input name="infos"  [(ngModel)]="contact.infos" #ctlInfos="ngModel" required minlength="8">
+    <span *ngIf="ctlInfos && ctlInfos.value && ctlInfos.value.length < 8">Le champ doit avoir au moins 8 caractères</span>
 
-
-    <button type="submit">Envoyer mon message</button>
+    <button type="submit" [ngClass]="{'disabled-button': !myForm.valid}" [disabled]="!myForm.valid">Envoyer mon message</button>
     <button type="reset">J'ai changé d'avis</button>
 
+
   </form>
+
+  <div *ngIf="formSubmittedSuccessfully" class="confirmation-message">
+    Votre message a bien été envoyé ! Merci de nous avoir contacté.
+  </div>
 </section>

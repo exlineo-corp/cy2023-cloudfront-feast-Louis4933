@@ -4,12 +4,8 @@ header {
     color: white;
     text-align: center;
     padding: 20px;
-}
-
-/* Style du titre principal */
-h2 {
-    font-size: 2em;
-    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 /* Style du sous-titre */
@@ -23,7 +19,7 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 50px;
+    margin-top: 30px;
 }
 
 /* Style du texte de bienvenue */
@@ -39,8 +35,8 @@ p {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
-  }
-  
-  p:hover {
+}
+
+p:hover {
     transform: scale(1.02);
-  }
+}
