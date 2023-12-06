@@ -18,7 +18,7 @@
       <span>{{ event.date | date:'MMM d, y, h:mm:ss a' }}</span>
     </div>
   </div>
-  <img src="https://via.placeholder.com/150" alt="Placeholder image" class="event-image">
+  <img *ngIf="event.image" [src]="event.image" [alt]="event.titre">
   <div class="event-actions">
     <button (click)="registration()" *ngIf="auth.isLoggedIn && !isRegistered && event.places > countParticipations && auth.profil">Réserver ma place</button>
     <button disabled *ngIf="auth.isLoggedIn && !isRegistered && event.places <= countParticipations">Il n'y a plus de place</button>
