@@ -24,7 +24,7 @@ export class UpdateUserComponent {
         this.router.navigate(['/admin']);
       })
       .catch((error) => {
-        console.error('Error updating statut:', error);
+        console.error('Error updating statut :', error);
       });
   }
 }

@@ -1,17 +1,17 @@
 <section>
-    <form [formGroup]="stockForm" (submit)="addStock()">
-      <h1>Ajout d'un stock</h1>
+  <form [formGroup]="stockForm" (submit)="addStock()">
+    <h1>Ajout d'un stock</h1>
 
-      <fieldset>
-        <label>Nom*</label>
-        <input formControlName="name" required>
-      </fieldset>
-  
-      <fieldset>
-        <label >Quantité</label>
-        <input type="number" formControlName="quantity" required>
-      </fieldset>
-  
-      <button type="submit">Ajouter le stock</button>
-    </form>
-  </section>
+    <fieldset>
+      <label>Nom<span class="required">*</span></label>
+      <input formControlName="name" required>
+    </fieldset>
+
+    <fieldset>
+      <label>Quantité<span class="required">*</span></label>
+      <input type="number" formControlName="quantity" required>
+    </fieldset>
+
+    <button type="submit" [ngClass]="{'disabled-button': !stockForm.valid}" [disabled]="!stockForm.valid">Ajouter le stock</button>
+  </form>
+</section>

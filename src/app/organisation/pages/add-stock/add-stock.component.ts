@@ -19,11 +19,9 @@ export class AddStockComponent {
 
   // Fonction pour ajouter un stock à la liste
   addStock() {
-    if (this.stockForm.valid) {
-      const stock = this.stockForm.value;
-      this.stockService.addStock(stock);
-      this.router.navigateByUrl('organisation/stocks');
-      this.stockForm.reset();
-    }
+    const stock = this.stockForm.value;
+    this.stockService.addStock(stock);
+    this.router.navigateByUrl('organisation/stocks');
+    this.stockForm.reset();
   }
 }

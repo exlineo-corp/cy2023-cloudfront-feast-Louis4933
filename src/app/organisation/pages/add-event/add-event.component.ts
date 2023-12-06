@@ -10,7 +10,7 @@ import { EvenementsService } from 'src/app/shared/services/evenements.service';
 })
 export class AddEventComponent {
 
-  constructor(public eventService: EvenementsService, private router: Router, private fb: FormBuilder) {}
+  constructor(public eventService: EvenementsService, private router: Router, private fb: FormBuilder) { }
 
   eventForm: FormGroup = this.fb.group({
     titre: ['', Validators.required],
@@ -21,24 +21,23 @@ export class AddEventComponent {
     image: ['']
   });
 
-
   // Fonction pour ajouter un évènement à la liste
   addEvent() {
-    if (this.eventForm.valid) {
-      const event = {
-        titre: this.eventForm.value.titre,
-        date: this.eventForm.value.date,
-        horaires: {
-          debut: this.eventForm.value.debut,
-          fin: this.eventForm.value.fin
-        },
-        places: this.eventForm.value.places,
-        image: this.eventForm.value.image
-      };
-      this.eventService.addEvent(event);
-      this.router.navigateByUrl('organisation/events');
-      this.eventForm.reset();
-    }
+
+    const event = {
+      titre: this.eventForm.value.titre,
+      date: this.eventForm.value.date,
+      horaires: {
+        debut: this.eventForm.value.debut,
+        fin: this.eventForm.value.fin
+      },
+      places: this.eventForm.value.places,
+      image: this.eventForm.value.image
+    };
+
+    this.eventService.addEvent(event);
+    this.router.navigateByUrl('organisation/events');
+    this.eventForm.reset();
   }
-  
+
 }
