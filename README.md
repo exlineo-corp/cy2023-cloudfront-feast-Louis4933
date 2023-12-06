@@ -52,3 +52,8 @@ Identifiants autre compte (organisateur) :
 
 email : papipa@papipa.fr
 Mdp : papipapapipa
+
+Identifiants user :
+
+email test@test.fr
+Mdp : testtest
