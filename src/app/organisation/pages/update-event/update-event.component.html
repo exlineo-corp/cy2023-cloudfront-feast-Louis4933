@@ -1,37 +1,37 @@
 <section>
-    <form [formGroup]="eventForm" (submit)="updateEvent()">
-      <h1>Modification d'un évènement</h1>
+  <form [formGroup]="eventForm" (submit)="updateEvent()">
+    <h1>Modification d'un évènement</h1>
 
-      <fieldset>
-        <label>Titre*</label>
-        <input formControlName="titre" required>
-      </fieldset>
-  
-      <fieldset>
-        <label >Date*</label>
-        <input type="date" formControlName="date" required>
-      </fieldset>
-  
-      <fieldset>
-        <label>Début*</label>
-        <input type="time" formControlName="debut" required>
-      </fieldset>
-  
-      <fieldset>
-        <label>Fin*</label>
-        <input type="time" formControlName="fin" required>
-      </fieldset>
-  
-      <fieldset>
-        <label>Nombre de places*</label>
-        <input type="number" formControlName="places" required>
-      </fieldset>
-  
-      <fieldset>
-        <label>Image</label>
-        <input type="text" formControlName="image" placeholder="URL de votre image">
-      </fieldset>
-  
-      <button type="submit">Modifier l'évènement</button>
-    </form>
-  </section>
+    <fieldset>
+      <label>Titre<span class="required">*</span></label>
+      <input formControlName="titre" required>
+    </fieldset>
+
+    <fieldset>
+      <label>Date<span class="required">*</span></label>
+      <input type="date" formControlName="date" required>
+    </fieldset>
+
+    <fieldset>
+      <label>Début<span class="required">*</span></label>
+      <input type="time" formControlName="debut" required>
+    </fieldset>
+
+    <fieldset>
+      <label>Fin<span class="required">*</span></label>
+      <input type="time" formControlName="fin" required>
+    </fieldset>
+
+    <fieldset>
+      <label>Nombre de places<span class="required">*</span></label>
+      <input type="number" formControlName="places" required>
+    </fieldset>
+
+    <fieldset>
+      <label>Image<span class="required">*</span></label>
+      <input type="text" formControlName="image" placeholder="URL de votre image" required>
+    </fieldset>
+
+    <button type="submit" [ngClass]="{'disabled-button': !eventForm.valid}" [disabled]="!eventForm.valid">Modifier l'évènement</button>
+  </form>
+</section>

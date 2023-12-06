@@ -17,11 +17,11 @@ export class UpdateEventComponent {
 
     this.eventId = this.route.snapshot.paramMap.get('id') || '';
     this.eventService.getEvent(this.eventId)
-    .then((e) => {
+      .then((e) => {
         this.event = e;
         // on a déjà le console.log dans le service
       })
-    .catch((er) => console.log(er));
+      .catch((er) => console.log(er));
 
   }
 
@@ -36,21 +36,21 @@ export class UpdateEventComponent {
 
   // Fonction pour mettre à jour un évènement dans la liste
   updateEvent() {
-    if (this.eventForm.valid) {
-      const event = {
-        titre: this.eventForm.value.titre,
-        date: this.eventForm.value.date,
-        horaires: {
-          debut: this.eventForm.value.debut,
-          fin: this.eventForm.value.fin
-        },
-        places: this.eventForm.value.places,
-        image: this.eventForm.value.image
-      };
-      this.eventService.updateEvent(this.eventId, event);
-      this.router.navigateByUrl('organisation/events');
-      this.eventForm.reset();
-    }
+
+    const event = {
+      titre: this.eventForm.value.titre,
+      date: this.eventForm.value.date,
+      horaires: {
+        debut: this.eventForm.value.debut,
+        fin: this.eventForm.value.fin
+      },
+      places: this.eventForm.value.places,
+      image: this.eventForm.value.image
+    };
+    
+    this.eventService.updateEvent(this.eventId, event);
+    this.router.navigateByUrl('organisation/events');
+    this.eventForm.reset();
   }
 
 }
