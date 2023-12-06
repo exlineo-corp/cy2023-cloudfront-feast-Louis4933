@@ -18,7 +18,6 @@ export class ContactComponent {
       ville: ''
     },
     tel: '',
-    mobile: '',
     email: '',
     infos: ''
   };

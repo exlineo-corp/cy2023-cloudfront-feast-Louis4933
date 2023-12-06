@@ -14,9 +14,7 @@ export interface ContactI {
   age ?: number;
   adresse : Adresse;
   tel ?: string;
-  mobile : string;
   email : string;
-  status ?: string;
   infos ?: string;
 }
 

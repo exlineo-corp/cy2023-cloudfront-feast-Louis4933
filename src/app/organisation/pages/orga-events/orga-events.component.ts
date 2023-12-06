@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { EvenementsService } from 'src/app/shared/services/evenements.service';
 
 @Component({
@@ -9,11 +10,26 @@ import { EvenementsService } from 'src/app/shared/services/evenements.service';
 })
 export class OrgaEventsComponent implements OnInit {
   filtre : string = '';
+  listener: Subscription;
+  
+  // Pagination
+  pageSize: number = 5; // Nombre d'événements par page
+  page: number = 1; // Page actuelle
+  totalPages: number =0;
+  paginatedEvents: any[] | undefined;
 
-  constructor(public eventService: EvenementsService, private router: Router) { }
+  constructor(public events: EvenementsService, private router: Router) { 
+    this.listener = this.events.eventsList$.subscribe({
+      next: evs => {
+        this.totalPages = Math.ceil(evs.length / this.pageSize);
+        this.goToPage(1); // Afficher la première page par défaut
+      },
+      error: er => console.log(er)
+    });
+  }
 
   ngOnInit(): void {
-    this.eventService.getEvents();
+    this.events.getEvents();
   }
 
   addEvent(){
@@ -21,12 +37,21 @@ export class OrgaEventsComponent implements OnInit {
   }
 
   deleteEvent(id : string){
-    this.eventService.deleteEvent(id);
-    this.eventService.getEvents();
+    this.events.deleteEvent(id);
+    this.events.getEvents();
   }
 
   updateEvent(id : string){
     this.router.navigateByUrl(`organisation/events/update/${id}`);
+  }
+
+  goToPage(page: number): void {
+    if (page >= 1 && page <= this.totalPages) {
+      this.page = page;
+      const startIndex = (page - 1) * this.pageSize;
+      const endIndex = startIndex + this.pageSize;
+      this.paginatedEvents = this.events.eventsList$.value.slice(startIndex, endIndex);
+    }
   }
 
 }

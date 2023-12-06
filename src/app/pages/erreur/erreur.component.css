@@ -1,0 +1,37 @@
+/* Appliquer des styles à la section d'erreur */
+.error-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Style du titre d'erreur */
+h1 {
+    color: #721c24;
+    font-size: 4em;
+    margin-bottom: 10px;
+}
+
+/* Style du texte d'explication */
+p {
+    font-size: 1.2em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Style du lien de retour à la page d'accueil */
+a {
+    color: #fff;
+    background-color: #4caf50;
+    /* Vert pour le lien */
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+a:hover {
+    background-color: #45a049;
+}

@@ -1,6 +1,5 @@
 <section>
-  <h1>Besoin d'infos ? Vous manquez de RedBull ?</h1>
-  <h2>Laissez-nous un message</h2>
+  <h1>Besoin d'infos ? Vous manquez de Redbull ?</h1>
   <form (submit)="saveMessage()">
     <label >Nom</label>
     <input name="nom" [(ngModel)]="contact.nom" #ctlNom="ngModel" required minlength="8">
@@ -8,6 +7,9 @@
 
     <label >Prénom</label>
     <input name="prenom" [(ngModel)]="contact.prenom">
+
+    <label >Age</label>
+    <input name="age" [(ngModel)]="contact.age">
 
     <label for="">Adresse (rue)</label>
     <input name="rue" [(ngModel)]="contact.adresse.rue">

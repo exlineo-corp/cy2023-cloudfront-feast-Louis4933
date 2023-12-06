@@ -1,42 +1,49 @@
 <section>
-    <header>
-      <h2>Liste des évènements</h2>
-    </header>
+  <header>
+    <h2>Liste des évènements</h2>
+  </header>
 
-    <fieldset>
-      <input type="text" [(ngModel)]="filtre"  placeholder="Filtre">
-      <button (click)="addEvent()">Nouvel évènement</button>
-    </fieldset>
+  <fieldset>
+    <input type="text" [(ngModel)]="filtre" placeholder="Filtre">
+    <button (click)="addEvent()">Nouvel évènement</button>
+  </fieldset>
 
-    <table *ngIf="eventService.eventsList.length > 0">
-      <thead>
-          <th>Titre</th>
-          <th>Bandeau</th>
-          <th>Nb. places</th>
-          <th>Début</th>
-          <th>Fin</th>
-          <th>Date</th>
-          <th>Gestion</th>
-      </thead>
-      <tbody>
-        <tr *ngFor="let event of eventService.eventsList| events:filtre">
-          <td><a [routerLink]="['/evenement', event.id]">{{ event.titre | uppercase }}</a></td>
-          <td><img src="{{ event.image }}" alt="Placeholder image"></td>
-          <td>{{ event.places }}</td>
-          <td>{{ event.horaires.debut }}</td>
-          <td>{{ event.horaires.fin }}</td>
-          <td>{{ event.date | date:'MMM d, y, h:mm:ss a' }}</td>
+  <table *ngIf="events.eventsList.length > 0">
+    <thead>
+      <tr>
+        <th>Titre</th>
+        <th>Bandeau</th>
+        <th>Nb. places</th>
+        <th>Début</th>
+        <th>Fin</th>
+        <th>Date</th>
+        <th>Gestion</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let event of paginatedEvents">
+        <td><a [routerLink]="['/evenement', event.id]">{{ event.titre | uppercase }}</a></td>
+        <td><img src="{{ event.image }}" alt="Placeholder image"></td>
+        <td>{{ event.places }}</td>
+        <td>{{ event.horaires.debut }}</td>
+        <td>{{ event.horaires.fin }}</td>
+        <td>{{ event.date | date:'MMM d, y, h:mm:ss a' }}</td>
 
-          <td>
-            <button (click)="deleteEvent(event.id)" *ngIf="event.id">
-              <i class="fas fa-trash-alt"></i> Supprimer
-            </button>
-            <button (click)="updateEvent(event.id)" *ngIf="event.id">
-              <i class="fas fa-edit"></i> Modifier
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+        <td>
+          <button (click)="deleteEvent(event.id)" *ngIf="event.id">
+            <i class="fas fa-trash-alt"></i> Supprimer
+          </button>
+          <button (click)="updateEvent(event.id)" *ngIf="event.id">
+            <i class="fas fa-edit"></i> Modifier
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="pagination">
+    <button (click)="goToPage(page - 1)" [disabled]="page === 1">Précédent</button>
+    <span>{{ page }} / {{ totalPages }}</span>
+    <button (click)="goToPage(page + 1)" [disabled]="page === totalPages">Suivant</button>
+  </div>
 </section>
-  

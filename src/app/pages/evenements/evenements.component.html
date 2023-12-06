@@ -1,18 +1,20 @@
 <section>
   <fieldset>
-    <input type="text" [(ngModel)]="filtre"  placeholder="Filtre">
+    <input type="text" [(ngModel)]="filtre" placeholder="Filtre">
   </fieldset>
   <table>
     <thead>
+      <tr>
         <th>Titre</th>
         <th>Nb. places</th>
         <th>Début</th>
         <th>Fin</th>
         <th>Date</th>
         <th>Image</th>
+      </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let event of events.eventsList$.value | events:filtre">
+      <tr *ngFor="let event of paginatedEvents">
         <td><a [routerLink]="['/evenement', event.id]">{{ event.titre | uppercase }}</a></td>
         <td>{{ event.places }}</td>
         <td>{{ event.horaires.debut }}</td>
@@ -23,5 +25,9 @@
     </tbody>
   </table>
 
+  <div class="pagination">
+    <button (click)="goToPage(page - 1)" [disabled]="page === 1">Précédent</button>
+    <span>{{ page }} / {{ totalPages }}</span>
+    <button (click)="goToPage(page + 1)" [disabled]="page === totalPages">Suivant</button>
+  </div>
 </section>
-

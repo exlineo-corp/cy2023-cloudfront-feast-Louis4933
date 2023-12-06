@@ -10,17 +10,25 @@ import { EvenementsService } from 'src/app/shared/services/evenements.service';
 
 export class EvenementsComponent implements OnInit, OnDestroy {
 
-  filtre : string = '';
+  filtre: string = '';
   listener: Subscription;
 
-  constructor(public events : EvenementsService) {
-    this.listener = this.events.eventsList$.subscribe(
-      {
-        next:evs => console.log('From observable subscription', evs),
-        error:er => console.log(er),
-        complete:() => console.log('Data synchro')
-      }
-    )
+  // Pagination
+  pageSize: number = 5; // Nombre d'événements par page
+  page: number = 1; // Page actuelle
+  totalPages: number =0;
+  paginatedEvents: any[] | undefined;
+
+  constructor(public events: EvenementsService) {
+    this.listener = this.events.eventsList$.subscribe({
+      next: evs => {
+        console.log('From observable subscription', evs);
+        this.totalPages = Math.ceil(evs.length / this.pageSize);
+        this.goToPage(1); // Afficher la première page par défaut
+      },
+      error: er => console.log(er),
+      complete: () => console.log('Data synchro')
+    });
   }
 
   ngOnInit(): void {
@@ -29,5 +37,14 @@ export class EvenementsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.listener.unsubscribe();
+  }
+
+  goToPage(page: number): void {
+    if (page >= 1 && page <= this.totalPages) {
+      this.page = page;
+      const startIndex = (page - 1) * this.pageSize;
+      const endIndex = startIndex + this.pageSize;
+      this.paginatedEvents = this.events.eventsList$.value.slice(startIndex, endIndex);
+    }
   }
 }

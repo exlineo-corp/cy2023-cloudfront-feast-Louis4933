@@ -1,0 +1,27 @@
+/* Appliquer des styles à la section de la page légale */
+.legal-page {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Appliquer des styles au titre principal */
+h1 {
+  color: #4caf50;
+}
+
+/* Appliquer des styles au sous-titre */
+h2 {
+  color: #007bff;
+}
+
+/* Appliquer des styles au texte */
+p {
+  color: #333;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
