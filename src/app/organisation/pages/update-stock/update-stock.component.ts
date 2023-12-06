@@ -18,11 +18,11 @@ export class UpdateStockComponent {
 
     this.stockId = this.route.snapshot.paramMap.get('id') || '';
     this.stockService.getStock(this.stockId)
-    .then((e) => {
+      .then((e) => {
         this.stock = e;
         // on a déjà le console.log dans le service
       })
-    .catch((er) => console.log(er));
+      .catch((er) => console.log(er));
 
   }
 
@@ -33,12 +33,12 @@ export class UpdateStockComponent {
 
   // Fonction pour mettre à jour un stock dans la liste
   updateStock() {
-    if (this.stockForm.valid) {
-      const stock = this.stockForm.value;
-      this.stockService.updatestock(this.stockId, stock);
-      this.router.navigateByUrl('organisation/stocks');
-      this.stockForm.reset();
-    }
+
+    const stock = this.stockForm.value;
+    this.stockService.updatestock(this.stockId, stock);
+    this.router.navigateByUrl('organisation/stocks');
+    this.stockForm.reset();
+
   }
 
 }
