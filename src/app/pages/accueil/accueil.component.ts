@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AccueilComponent {
   title = 'CY2023-feast';
-  soustitre:string = "L'application de gestion de vos soirées";
+  soustitre: string = "L'application de gestion de vos soirées";
 }

@@ -26,10 +26,12 @@ export class InscriptionComponent implements OnInit{
     }
   }
 
+  // Fonction d'inscription
   signUp() {
     this.auth.fireSignUp(this.email, this.mdp)
   }
 
+  // Envoi du profil de l'user
   submitProfile() {
     this.user.manageDoc(this.ctlf.value);
   }

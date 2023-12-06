@@ -56,7 +56,7 @@ button {
   font-size: 1em;
 }
 
-button:hover {
+button::not(.disabled-button):hover {
   background-color: #45a049;
 }
 
@@ -76,4 +76,14 @@ div a {
 
 div a:hover {
   text-decoration: underline;
+}
+
+.required {
+  color: red;
+}
+
+.disabled-button {
+  background-color: #ccc;
+  color: #999; 
+  cursor: not-allowed;
 }

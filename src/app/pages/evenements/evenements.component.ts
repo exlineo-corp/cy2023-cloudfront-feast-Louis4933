@@ -40,6 +40,7 @@ export class EvenementsComponent implements OnInit, OnDestroy {
     this.listener.unsubscribe();
   }
 
+  // Pagination
   goToPage(page: number): void {
     if (page >= 1 && page <= this.totalPages) {
       this.page = page;

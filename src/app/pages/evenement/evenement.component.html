@@ -2,19 +2,19 @@
   <h2>{{ event.titre }}</h2>
   <div class="event-details">
     <div class="detail">
-      <span>Places disponibles:</span>
+      <span>Nombre de places :</span>
       <span>{{ event.places }}</span>
     </div>
     <div class="detail">
-      <span>Début:</span>
+      <span>Début :</span>
       <span>{{ event.horaires.debut }}</span>
     </div>
     <div class="detail">
-      <span>Fin:</span>
+      <span>Fin :</span>
       <span>{{ event.horaires.fin }}</span>
     </div>
     <div class="detail">
-      <span>Date:</span>
+      <span>Date :</span>
       <span>{{ event.date | date:'MMM d, y, h:mm:ss a' }}</span>
     </div>
   </div>
@@ -24,6 +24,6 @@
     <button disabled *ngIf="auth.isLoggedIn && !isRegistered && event.places <= countParticipations">Il n'y a plus de place</button>
     <button disabled *ngIf="auth.isLoggedIn && isRegistered">Vous êtes déjà inscrit</button>
     <button (click)="deregistration()" *ngIf="auth.isLoggedIn && isRegistered">Se désinscrire</button>
-    <a *ngIf="!auth.isLoggedIn" routerLink="/inscription">Inscrivez-vous pour y participer</a>
+    <a *ngIf="!auth.isLoggedIn" routerLink="/inscription" class="inscription-link">Inscrivez-vous pour y participer</a>
   </div>
 </section>

@@ -1,20 +1,20 @@
 <section>
 
-  <form (submit)="signUp()" *ngIf="!auth.isLoggedIn">
+  <form #registerForm="ngForm" (submit)="signUp()" *ngIf="!auth.isLoggedIn">
 
     <h1>Inscription</h1>
     
     <fieldset>
-      <label>Mail</label>
-      <input [(ngModel)]="email" name="email">
+      <label>Mail<span class="required">*</span></label>
+      <input [(ngModel)]="email" name="email" required>
     </fieldset>
 
     <fieldset>
-      <label>Mdp</label>
-      <input  [(ngModel)]="mdp" name="mdp">
+      <label>Mot de passe<span class="required">*</span></label>
+      <input  [(ngModel)]="mdp" name="mdp" required>
     </fieldset>
 
-    <button type="submit">S'inscrire</button>
+    <button type="submit" [ngClass]="{'disabled-button': !registerForm.valid}" [disabled]="!registerForm.valid">S'inscrire</button>
 
   </form>
 
