@@ -97,6 +97,7 @@ export class AuthService {
         console.log('User account has been deleted');
         this.authID = { id : '', mdp : '' };
         this.router.navigateByUrl('/connexion');
+        this.isLoggedIn = false;
       }
     )
     .catch(er => console.log(er));
